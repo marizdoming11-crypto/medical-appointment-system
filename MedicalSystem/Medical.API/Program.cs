@@ -1,4 +1,4 @@
-using Medical.API.Data;
+﻿using Medical.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -15,16 +15,27 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Read JWT settings and validate key presence
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+});
+
+// Read JWT settings
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var jwtKey = jwtSettings.GetValue<string>("Key");
+
 if (string.IsNullOrWhiteSpace(jwtKey))
 {
-    throw new InvalidOperationException("Configuration error: 'Jwt:Key' is missing or empty in appsettings.json.");
+    throw new InvalidOperationException("Jwt:Key is missing in appsettings.json");
 }
+
 var key = Encoding.UTF8.GetBytes(jwtKey);
 
-// Register authentication/authorization BEFORE building the app
+// ✅ AUTH
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -48,23 +59,19 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+// ✅ MIDDLEWARE
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
+// ✅ ENABLE CORS HERE (MOVED UP)
+app.UseCors("AllowAll");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// ✅ ALWAYS LAST
 app.Run();
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        policy => policy.AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod());
-});
-
-app.UseCors("AllowAll");

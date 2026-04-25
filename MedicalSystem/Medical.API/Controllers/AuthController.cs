@@ -67,4 +67,25 @@ public class AuthController : ControllerBase
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+    [HttpPost("register")]
+    public IActionResult Register([FromBody] RegisterDto request)
+    {
+        var exists = _context.Users.Any(u => u.Email == request.Email);
+
+        if (exists)
+            return BadRequest("Email already exists");
+
+        var user = new User
+        {
+            FullName = request.FullName,
+            Email = request.Email,
+            PasswordHash = request.Password,
+            Role = "Patient"
+        };
+
+        _context.Users.Add(user);
+        _context.SaveChanges();
+
+        return Ok("User registered");
+    }
 }

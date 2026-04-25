@@ -15,21 +15,22 @@ public class AppointmentController : ControllerBase
         _context = context;
     }
 
-    // 📅 Book Appointment
-    [HttpPost]
+    // Create appointment (book)
+    [HttpPost("book")]
     public IActionResult Book(Appointment appointment)
     {
-        // ❗ Check if doctor already has appointment at same time
-        var conflict = _context.Appointments.Any(a =>
-            a.DoctorId == appointment.DoctorId &&
-            a.AppointmentDate == appointment.AppointmentDate);
+        var slot = _context.TimeSlots
+            .FirstOrDefault(s => s.TimeSlotId == appointment.TimeSlotId);
 
-        if (conflict)
-        {
-            return BadRequest("Doctor already has an appointment at this time.");
-        }
+        if (slot == null)
+            return BadRequest("Invalid slot");
 
-        appointment.Status = "Pending";
+        if (slot.IsBooked)
+            return BadRequest("Slot already booked");
+
+        slot.IsBooked = true;
+
+        appointment.Status ??= "Pending";
 
         _context.Appointments.Add(appointment);
         _context.SaveChanges();
@@ -37,10 +38,110 @@ public class AppointmentController : ControllerBase
         return Ok("Appointment booked successfully");
     }
 
-    // 📄 Get all appointments
+    // Cancel appointment (keeps record, frees slot)
+    [HttpPatch("{id}/cancel")]
+    public IActionResult Cancel(int id)
+    {
+        var appt = _context.Appointments.Find(id);
+
+        if (appt == null)
+            return NotFound();
+
+        var slot = _context.TimeSlots.Find(appt.TimeSlotId);
+
+        if (slot != null)
+            slot.IsBooked = false;
+
+        appt.Status = "Cancelled";
+
+        _context.SaveChanges();
+
+        return Ok("Appointment cancelled");
+    }
+
+    // Get all appointments
     [HttpGet]
     public IActionResult GetAll()
     {
         return Ok(_context.Appointments.ToList());
+    }
+
+    // Get appointment by id
+    [HttpGet("{id}")]
+    public IActionResult GetById(int id)
+    {
+        var appt = _context.Appointments.Find(id);
+
+        if (appt == null)
+            return NotFound();
+
+        return Ok(appt);
+    }
+
+    // Update appointment (reschedule)
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Appointment updated)
+    {
+        var appt = _context.Appointments.Find(id);
+
+        if (appt == null)
+            return NotFound();
+
+        var oldSlot = _context.TimeSlots.Find(appt.TimeSlotId);
+        var newSlot = _context.TimeSlots.Find(updated.TimeSlotId);
+
+        if (newSlot == null)
+            return BadRequest("Invalid new slot");
+
+        if (newSlot.IsBooked)
+            return BadRequest("New slot is already booked");
+
+        if (oldSlot != null)
+            oldSlot.IsBooked = false;
+
+        newSlot.IsBooked = true;
+
+        appt.TimeSlotId = updated.TimeSlotId;
+        appt.DoctorId = updated.DoctorId;
+        appt.UserId = updated.UserId;
+        appt.Status = updated.Status ?? appt.Status;
+
+        _context.SaveChanges();
+
+        return Ok("Appointment updated");
+    }
+
+    // Delete appointment (removes record and frees slot)
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var appt = _context.Appointments.Find(id);
+
+        if (appt == null)
+            return NotFound();
+
+        var slot = _context.TimeSlots.Find(appt.TimeSlotId);
+
+        if (slot != null)
+            slot.IsBooked = false;
+
+        _context.Appointments.Remove(appt);
+        _context.SaveChanges();
+
+        return Ok("Appointment deleted");
+    }
+
+    // Get available slots for a doctor
+    [HttpGet("available/{doctorId}")]
+    public IActionResult GetAvailableSlots(int doctorId)
+    {
+        var slots = _context.TimeSlots
+            .Where(s => !s.IsBooked &&
+                        _context.Schedules.Any(sc =>
+                            sc.ScheduleId == s.ScheduleId &&
+                            sc.DoctorId == doctorId))
+            .ToList();
+
+        return Ok(slots);
     }
 }
