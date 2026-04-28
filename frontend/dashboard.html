@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MediFlow Dashboard V2</title>
+    <style>
+        body { font-family: Arial; background:#f4f4f4; padding:20px; }
+        .header { background:white; padding:15px; display:flex; justify-content:space-between; }
+        .card { background:white; padding:15px; margin-top:15px; }
+        .btn { padding:6px 10px; cursor:pointer; }
+        .danger { background:red; color:white; border:none; }
+        .primary { background:#2c5f8a; color:white; border:none; }
+        .doctor { border:1px solid #ddd; padding:10px; margin:10px 0; }
+        .row { margin-top:10px; }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h3>🏥 MediFlow</h3>
+    <div>
+        <span id="userLabel"></span>
+        <button class="btn danger" onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="card" id="content"></div>
+
+<script>
+const API = "http://localhost:5200/api";
+
+// ================= AUTH =================
+const user = JSON.parse(localStorage.getItem("user"));
+const token = localStorage.getItem("token");
+
+if (!user) {
+    alert("Please login first");
+    window.location.href = "login.html";
+}
+
+document.getElementById("userLabel").innerText =
+    `Welcome, ${user.fullName || user.email}`;
+
+// ================= API HELPER =================
+async function api(url, method="GET", body=null) {
+    try {
+        const res = await fetch(API + url, {
+            method,
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token ? `Bearer ${token}` : ""
+            },
+            body: body ? JSON.stringify(body) : null
+        });
+
+        if (!res.ok) throw new Error(await res.text());
+        return await res.json();
+    } catch (err) {
+        alert("API Error: " + err.message);
+        return null;
+    }
+}
+
+// ================= DATA =================
+let doctors = [];
+let appointments = [];
+let schedules = [];
+
+// ================= LOAD =================
+async function init() {
+    await loadDoctors();
+    await loadAppointments();
+    renderDashboard();
+}
+
+// ================= LOAD FUNCTIONS =================
+async function loadDoctors() {
+    doctors = await api("/doctor") || [];
+}
+
+async function loadAppointments() {
+    appointments = await api(`/appointment/user/${user.id}`) || [];
+}
+
+// ================= RENDER =================
+function renderDashboard() {
+    const html = `
+        <h2>Dashboard</h2>
+
+        <div class="row">
+            <button class="btn primary" onclick="showDoctors()">Doctors</button>
+            <button class="btn primary" onclick="showAppointments()">My Appointments</button>
+        </div>
+    `;
+
+    document.getElementById("content").innerHTML = html;
+}
+
+function showDoctors() {
+    let html = `<h3>Doctors</h3>`;
+
+    doctors.forEach(d => {
+        html += `
+            <div class="doctor">
+                <b>${d.name}</b><br>
+                ${d.specialty}<br>
+                Fee: ${d.fee}<br>
+
+                <button class="btn primary" onclick="loadSchedules(${d.id})">
+                    View Schedule
+                </button>
+            </div>
+        `;
+    });
+
+    document.getElementById("content").innerHTML = html;
+}
+
+function showAppointments() {
+    let html = `<h3>My Appointments</h3>`;
+
+    if (!appointments.length) {
+        html += "<p>No appointments yet</p>";
+    }
+
+    appointments.forEach(a => {
+        html += `
+            <div class="doctor">
+                Doctor ID: ${a.doctorId}<br>
+                Date: ${a.appointmentDate}<br>
+                Status: ${a.status}<br>
+
+                <button class="btn danger" onclick="cancelAppointment(${a.id})">
+                    Cancel
+                </button>
+
+                <button class="btn danger" onclick="deleteAppointment(${a.id})">
+                    Delete
+                </button>
+            </div>
+        `;
+    });
+
+    document.getElementById("content").innerHTML = html;
+}
+
+// ================= SCHEDULE =================
+async function loadSchedules(doctorId) {
+    schedules = await api(`/schedule/${doctorId}`) || [];
+
+    let html = `<h3>Available Slots</h3>`;
+
+    schedules.forEach(s => {
+        html += `
+            <div class="doctor">
+                ${s.date} - ${s.timeSlot}
+                <button class="btn primary"
+                    onclick="book(${doctorId}, '${s.date}')">
+                    Book
+                </button>
+            </div>
+        `;
+    });
+
+    document.getElementById("content").innerHTML = html;
+}
+
+// ================= ACTIONS =================
+async function book(doctorId, date) {
+    const res = await api("/appointment", "POST", {
+        doctorId,
+        userId: user.id,
+        appointmentDate: date,
+        status: "Pending"
+    });
+
+    if (res) {
+        alert("Booked successfully");
+        await loadAppointments();
+        showAppointments();
+    }
+}
+
+async function cancelAppointment(id) {
+    const res = await api(`/appointment/${id}`, "PUT", {
+        status: "Cancelled"
+    });
+
+    if (res) {
+        alert("Cancelled");
+        await loadAppointments();
+        showAppointments();
+    }
+}
+
+async function deleteAppointment(id) {
+    const res = await api(`/appointment/${id}`, "DELETE");
+
+    if (res) {
+        alert("Deleted");
+        await loadAppointments();
+        showAppointments();
+    }
+}
+
+// ================= LOGOUT =================
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+
+// ================= START =================
+init();
+
+</script>
+
+</body>
+</html>
