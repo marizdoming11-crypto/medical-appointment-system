@@ -1,0 +1,14 @@
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\obj\Debug\net9.0\Medical.ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\obj\Debug\net9.0\Medical.ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\obj\Debug\net9.0\Medical.ConsoleApp.AssemblyInfo.cs
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\obj\Debug\net9.0\Medical.ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\bin\Debug\net9.0\Medical.ConsoleApp.exe
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\bin\Debug\net9.0\Medical.ConsoleApp.deps.json
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\bin\Debug\net9.0\Medical.ConsoleApp.runtimeconfig.json
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\bin\Debug\net9.0\Medical.ConsoleApp.dll
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\bin\Debug\net9.0\Medical.ConsoleApp.pdb
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\obj\Debug\net9.0\Medical.ConsoleApp.dll
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\obj\Debug\net9.0\refint\Medical.ConsoleApp.dll
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\obj\Debug\net9.0\Medical.ConsoleApp.pdb
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\obj\Debug\net9.0\Medical.ConsoleApp.genruntimeconfig.cache
+C:\Users\HP\MedicalSystem2\Medical.ConsoleApp\obj\Debug\net9.0\ref\Medical.ConsoleApp.dll
