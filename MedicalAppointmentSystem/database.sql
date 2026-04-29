@@ -1,0 +1,54 @@
+DROP DATABASE IF EXISTS medical_appointment_system;
+CREATE DATABASE medical_appointment_system;
+USE medical_appointment_system;
+
+CREATE TABLE Users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fullName VARCHAR(100) NOT NULL,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    passwordHash VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL DEFAULT 'User',
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Doctors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fullName VARCHAR(100) NOT NULL,
+    specialization VARCHAR(100) NOT NULL,
+    contactNumber VARCHAR(50) NOT NULL,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE DoctorSchedules (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    doctorId INT NOT NULL,
+    scheduleDate DATE NOT NULL,
+    startTime VARCHAR(50) NOT NULL,
+    endTime VARCHAR(50) NOT NULL,
+    startTime24 TIME NOT NULL,
+    endTime24 TIME NOT NULL,
+    isAvailable TINYINT(1) NOT NULL DEFAULT 1,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (doctorId) REFERENCES Doctors(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Appointments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL,
+    doctorId INT NOT NULL,
+    appointmentDate DATE NOT NULL,
+    appointmentTime TIME NOT NULL,
+    reason VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'Pending',
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY (doctorId) REFERENCES Doctors(id) ON DELETE CASCADE
+);
+
+CREATE TABLE AuditLogs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NULL,
+    action VARCHAR(100) NOT NULL,
+    details VARCHAR(255) NOT NULL,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+);

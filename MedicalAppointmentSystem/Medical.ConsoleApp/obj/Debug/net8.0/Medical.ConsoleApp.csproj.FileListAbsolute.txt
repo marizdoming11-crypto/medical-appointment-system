@@ -1,0 +1,14 @@
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\bin\Debug\net8.0\Medical.ConsoleApp.exe
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\bin\Debug\net8.0\Medical.ConsoleApp.deps.json
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\bin\Debug\net8.0\Medical.ConsoleApp.runtimeconfig.json
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\bin\Debug\net8.0\Medical.ConsoleApp.dll
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\bin\Debug\net8.0\Medical.ConsoleApp.pdb
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\obj\Debug\net8.0\Medical.ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\obj\Debug\net8.0\Medical.ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\obj\Debug\net8.0\Medical.ConsoleApp.AssemblyInfo.cs
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\obj\Debug\net8.0\Medical.ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\obj\Debug\net8.0\Medical.ConsoleApp.dll
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\obj\Debug\net8.0\refint\Medical.ConsoleApp.dll
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\obj\Debug\net8.0\Medical.ConsoleApp.pdb
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\obj\Debug\net8.0\Medical.ConsoleApp.genruntimeconfig.cache
+C:\Users\HP\MedicalAppointmentSystem_PRODUCTION\MedicalAppointmentSystem\Medical.ConsoleApp\obj\Debug\net8.0\ref\Medical.ConsoleApp.dll
