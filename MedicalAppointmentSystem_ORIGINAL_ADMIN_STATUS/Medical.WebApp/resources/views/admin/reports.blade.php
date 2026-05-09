@@ -1,0 +1,1 @@
+@extends('layouts.app')@section('content')<h2>Reports</h2><div class="row g-3">@foreach($summary as $key=>$value)<div class="col-md-3"><div class="card text-center"><div class="card-body"><h3>{{ $value }}</h3><p class="text-muted text-capitalize">{{ $key }}</p></div></div></div>@endforeach</div>@endsection
