@@ -12,3 +12,4 @@ C:\projects\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\MedicalAppointmentSys
 C:\projects\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\Medical.ConsoleApp\obj\Debug\net8.0\Medical.ConsoleApp.pdb
 C:\projects\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\Medical.ConsoleApp\obj\Debug\net8.0\Medical.ConsoleApp.genruntimeconfig.cache
 C:\projects\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\Medical.ConsoleApp\obj\Debug\net8.0\ref\Medical.ConsoleApp.dll
+C:\projects\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\Medical.ConsoleApp\obj\Debug\net8.0\Medical.ConsoleApp.sourcelink.json
