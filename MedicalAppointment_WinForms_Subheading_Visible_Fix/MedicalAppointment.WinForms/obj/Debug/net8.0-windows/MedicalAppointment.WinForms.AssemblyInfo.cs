@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MedicalAppointment.WinForms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb197292e6d7106b4df5bbde134d7f9a1f25b0b6")]
 [assembly: System.Reflection.AssemblyProductAttribute("MedicalAppointment.WinForms")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MedicalAppointment.WinForms")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
