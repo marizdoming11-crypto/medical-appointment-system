@@ -1,0 +1,11 @@
+bin/
+obj/
+.vs/
+venv/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.sourcelink.json
+*.zip
+.env
