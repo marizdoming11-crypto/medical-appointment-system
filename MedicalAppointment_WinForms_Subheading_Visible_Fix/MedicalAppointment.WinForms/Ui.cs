@@ -10,32 +10,31 @@ public static class Ui
     public static readonly Color Bg = Color.FromArgb(244, 247, 251);
     public static readonly Color Dark = Color.FromArgb(15, 23, 42);
     public static readonly Color Muted = Color.FromArgb(100, 116, 139);
-    public static readonly Font TitleFont = new("Segoe UI", 22, FontStyle.Bold);
-    public static readonly Font HeaderFont = new("Segoe UI", 13, FontStyle.Bold);
     public static readonly Font BodyFont = new("Segoe UI", 10);
 
-    public static Button PrimaryButton(string text) => StyleButton(new Button { Text = text, BackColor = Primary, ForeColor = Color.White }, true);
-    public static Button LightButton(string text) => StyleButton(new Button { Text = text, BackColor = Color.White, ForeColor = Primary }, false);
+    public static Button PrimaryButton(string text) =>
+        StyleButton(new Button { Text = text, BackColor = Primary, ForeColor = Color.White }, true);
+
+    public static Button LightButton(string text) =>
+        StyleButton(new Button { Text = text, BackColor = Color.White, ForeColor = Primary }, false);
 
     private static Button StyleButton(Button b, bool primary)
     {
         b.FlatStyle = FlatStyle.Flat;
         b.FlatAppearance.BorderSize = primary ? 0 : 1;
         b.FlatAppearance.BorderColor = Primary;
-        b.Height = 42;
+        b.Height = 46;
         b.Font = new Font("Segoe UI", 10, FontStyle.Bold);
         b.Cursor = Cursors.Hand;
-        b.TextAlign = ContentAlignment.MiddleCenter;
         return b;
     }
 
     public static TextBox TextBox(string placeholder = "") => new()
     {
         Font = new Font("Segoe UI", 11),
-        Height = 38,
+        Height = 40,
         PlaceholderText = placeholder,
-        BorderStyle = BorderStyle.FixedSingle,
-        Margin = new Padding(0, 6, 0, 10)
+        BorderStyle = BorderStyle.FixedSingle
     };
 
     public static Label Label(string text, int size = 10, bool bold = false) => new()
@@ -43,8 +42,7 @@ public static class Ui
         Text = text,
         Font = new Font("Segoe UI", size, bold ? FontStyle.Bold : FontStyle.Regular),
         AutoSize = true,
-        ForeColor = Dark,
-        Margin = new Padding(0, 0, 0, 8)
+        ForeColor = Dark
     };
 
     public static Panel Card() => new()
@@ -54,20 +52,16 @@ public static class Ui
         Margin = new Padding(0, 0, 18, 15)
     };
 
-    public static Label SectionTitle(string text)
+    public static Label SectionTitle(string text) => new()
     {
-        return new Label
-        {
-            Text = text,
-            Font = new Font("Segoe UI", 14, FontStyle.Bold),
-            ForeColor = Dark,
-            Dock = DockStyle.Top,
-            AutoSize = false,
-            Height = 48,
-            TextAlign = ContentAlignment.MiddleLeft,
-            Padding = new Padding(0, 0, 0, 8)
-        };
-    }
+        Text = text,
+        Font = new Font("Segoe UI", 15, FontStyle.Bold),
+        ForeColor = Dark,
+        Dock = DockStyle.Fill,
+        AutoSize = false,
+        Height = 60,
+        TextAlign = ContentAlignment.MiddleLeft
+    };
 
     public static DataGridView Grid()
     {
@@ -88,6 +82,7 @@ public static class Ui
             EnableHeadersVisualStyles = false,
             GridColor = Color.FromArgb(226, 232, 240)
         };
+
         g.ColumnHeadersDefaultCellStyle.BackColor = Primary;
         g.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         g.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
@@ -95,41 +90,69 @@ public static class Ui
         g.DefaultCellStyle.SelectionBackColor = Color.FromArgb(219, 234, 254);
         g.DefaultCellStyle.SelectionForeColor = Dark;
         g.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 250, 252);
+
         return g;
     }
 
-    public static TableLayoutPanel PageLayout(int headerHeight = 96, int toolbarHeight = 0)
+    public static TableLayoutPanel PageLayout(int headerHeight = 130, int toolbarHeight = 170)
     {
         var layout = new TableLayoutPanel
         {
             Dock = DockStyle.Fill,
             ColumnCount = 1,
             RowCount = toolbarHeight > 0 ? 3 : 2,
-            BackColor = Bg
+            BackColor = Bg,
+            Margin = Padding.Empty,
+            Padding = Padding.Empty
         };
+
         layout.RowStyles.Add(new RowStyle(SizeType.Absolute, headerHeight));
-        if (toolbarHeight > 0) layout.RowStyles.Add(new RowStyle(SizeType.Absolute, toolbarHeight));
+
+        if (toolbarHeight > 0)
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, toolbarHeight));
+
         layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+
         return layout;
     }
 
     public static Panel Header(string title, string subtitle = "")
     {
-        var p = new Panel { Dock = DockStyle.Fill, BackColor = Bg, Padding = new Padding(0, 0, 0, 14), MinimumSize = new Size(0, 88) };
-        var t = Label(title, 22, true);
-        t.AutoSize = false;
-        t.SetBounds(0, 0, 900, 40);
-        t.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
-        p.Controls.Add(t);
-        if (!string.IsNullOrWhiteSpace(subtitle))
+        var p = new Panel
         {
-            var s = Label(subtitle, 10, false);
-            s.AutoSize = false;
-            s.ForeColor = Muted;
-            s.SetBounds(2, 46, 900, 28);
-            s.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right;
-            p.Controls.Add(s);
-        }
+            Dock = DockStyle.Fill,
+            BackColor = Bg,
+            Padding = new Padding(0, 10, 0, 10)
+        };
+
+        var t = new Label
+        {
+            Text = title,
+            Font = new Font("Segoe UI", 22, FontStyle.Bold),
+            ForeColor = Dark,
+            AutoSize = false,
+            Location = new Point(0, 8),
+            Size = new Size(1000, 48),
+            Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right,
+            TextAlign = ContentAlignment.MiddleLeft
+        };
+
+        p.Controls.Add(t);
+
+        var s = new Label
+        {
+            Text = subtitle,
+            Font = new Font("Segoe UI", 11),
+            ForeColor = Muted,
+            AutoSize = false,
+            Location = new Point(2, 62),
+            Size = new Size(1000, 32),
+            Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right,
+            TextAlign = ContentAlignment.MiddleLeft
+        };
+
+        p.Controls.Add(s);
+
         return p;
     }
 }
@@ -146,7 +169,7 @@ public class AppForm : Form
         Text = title;
         StartPosition = FormStartPosition.CenterScreen;
         WindowState = FormWindowState.Maximized;
-        MinimumSize = new Size(980, 600);
+        MinimumSize = new Size(1000, 620);
         BackColor = Ui.Bg;
         Font = Ui.BodyFont;
         AutoScaleMode = AutoScaleMode.Dpi;
@@ -155,9 +178,8 @@ public class AppForm : Form
         {
             Dock = DockStyle.Fill,
             AutoScroll = true,
-            Padding = new Padding(24, 22, 24, 22),
-            BackColor = Ui.Bg,
-            Margin = Padding.Empty
+            Padding = new Padding(34, 42, 34, 34),
+            BackColor = Ui.Bg
         };
 
         if (withSidebar)
@@ -171,9 +193,11 @@ public class AppForm : Form
                 Margin = Padding.Empty,
                 Padding = Padding.Empty
             };
-            Shell.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 220));
+
+            Shell.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 280));
             Shell.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
             Shell.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+
             Controls.Add(Shell);
 
             Sidebar = new FlowLayoutPanel
@@ -183,7 +207,7 @@ public class AppForm : Form
                 BackColor = Ui.PrimaryDark,
                 FlowDirection = FlowDirection.TopDown,
                 WrapContents = false,
-                Padding = new Padding(14, 28, 14, 18),
+                Padding = new Padding(22, 32, 22, 18),
                 Margin = Padding.Empty
             };
 
@@ -203,15 +227,13 @@ public class AppForm : Form
     {
         if (Shell == null) return;
 
-        // Good for small 12.5-inch laptop screens while still using full screen.
-        int sidebarWidth = ClientSize.Width < 1180 ? 190 : 220;
+        int sidebarWidth = 280;
         Shell.ColumnStyles[0].Width = sidebarWidth;
 
-        MainPanel.Padding = ClientSize.Width < 1250
-            ? new Padding(18, 18, 18, 18)
-            : new Padding(24, 22, 24, 22);
+        MainPanel.Padding = new Padding(34, 42, 34, 34);
 
         int innerWidth = sidebarWidth - Sidebar.Padding.Left - Sidebar.Padding.Right;
+
         foreach (Control control in Sidebar.Controls)
             control.Width = innerWidth;
     }
@@ -222,12 +244,15 @@ public class AppForm : Form
         {
             Text = title,
             ForeColor = Color.White,
-            Font = new Font("Segoe UI", 15, FontStyle.Bold),
-            Height = 66,
+            Font = new Font("Segoe UI", 16, FontStyle.Bold),
+            Height = 78,
+            Width = 230,
             TextAlign = ContentAlignment.MiddleLeft,
-            AutoEllipsis = true,
-            Margin = new Padding(0, 0, 0, 12)
+            AutoSize = false,
+            AutoEllipsis = false,
+            Margin = new Padding(0, 0, 0, 18)
         };
+
         Sidebar.Controls.Add(label);
     }
 
@@ -236,20 +261,23 @@ public class AppForm : Form
         var btn = new Button
         {
             Text = "  " + text,
-            Height = 46,
+            Height = 52,
+            Width = 230,
             BackColor = Ui.PrimaryDark,
             ForeColor = Color.White,
             FlatStyle = FlatStyle.Flat,
             TextAlign = ContentAlignment.MiddleLeft,
             Font = new Font("Segoe UI", 10, FontStyle.Bold),
             Cursor = Cursors.Hand,
-            Margin = new Padding(0, 3, 0, 3),
-            AutoEllipsis = true
+            Margin = new Padding(0, 5, 0, 5),
+            AutoEllipsis = false
         };
+
         btn.FlatAppearance.BorderSize = 0;
         btn.MouseEnter += (_, _) => btn.BackColor = Ui.Primary;
         btn.MouseLeave += (_, _) => btn.BackColor = Ui.PrimaryDark;
         btn.Click += (_, _) => click();
+
         Sidebar.Controls.Add(btn);
         return btn;
     }
@@ -263,8 +291,14 @@ public class AppForm : Form
 
     protected async Task Safe(Func<Task> action)
     {
-        try { await action(); }
-        catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        try
+        {
+            await action();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 
     protected void Open(Form form)
