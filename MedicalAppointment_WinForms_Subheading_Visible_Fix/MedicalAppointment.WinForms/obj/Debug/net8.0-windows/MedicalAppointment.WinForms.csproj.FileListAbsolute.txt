@@ -1,0 +1,14 @@
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\bin\Debug\net8.0-windows\MedicalAppointment.WinForms.exe
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\bin\Debug\net8.0-windows\MedicalAppointment.WinForms.deps.json
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\bin\Debug\net8.0-windows\MedicalAppointment.WinForms.runtimeconfig.json
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\bin\Debug\net8.0-windows\MedicalAppointment.WinForms.dll
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\bin\Debug\net8.0-windows\MedicalAppointment.WinForms.pdb
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\obj\Debug\net8.0-windows\MedicalAppointment.WinForms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\obj\Debug\net8.0-windows\MedicalAppointment.WinForms.AssemblyInfoInputs.cache
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\obj\Debug\net8.0-windows\MedicalAppointment.WinForms.AssemblyInfo.cs
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\obj\Debug\net8.0-windows\MedicalAppointment.WinForms.csproj.CoreCompileInputs.cache
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\obj\Debug\net8.0-windows\MedicalAppointment.WinForms.dll
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\obj\Debug\net8.0-windows\refint\MedicalAppointment.WinForms.dll
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\obj\Debug\net8.0-windows\MedicalAppointment.WinForms.pdb
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\obj\Debug\net8.0-windows\MedicalAppointment.WinForms.genruntimeconfig.cache
+C:\Users\HP\Downloads\MedicalAppointment_WinForms_Subheading_Visible_Fix\MedicalAppointment.WinForms\obj\Debug\net8.0-windows\ref\MedicalAppointment.WinForms.dll
