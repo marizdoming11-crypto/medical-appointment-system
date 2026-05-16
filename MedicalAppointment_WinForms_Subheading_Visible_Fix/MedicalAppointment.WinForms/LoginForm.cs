@@ -6,10 +6,17 @@ namespace MedicalAppointment.WinForms;
 public class LoginForm : Form
 {
     private readonly ApiClient Api = new();
-    private readonly TextBox txtApi = Ui.TextBox("API URL");
+
     private readonly TextBox txtUsername = Ui.TextBox("Username");
     private readonly TextBox txtPassword = Ui.TextBox("Password");
-    private readonly CheckBox chkShow = new() { Text = "Show password", AutoSize = true, Font = Ui.BodyFont, BackColor = Color.White };
+
+    private readonly CheckBox chkShow = new()
+    {
+        Text = "Show password",
+        AutoSize = true,
+        Font = new Font("Segoe UI", 10),
+        BackColor = Color.White
+    };
 
     public LoginForm()
     {
@@ -19,21 +26,94 @@ public class LoginForm : Form
         StartPosition = FormStartPosition.CenterScreen;
         BackColor = Ui.Bg;
 
-        var wrapper = new Panel { Width = 520, Height = 500, BackColor = Color.White, Anchor = AnchorStyles.None, Padding = new Padding(45) };
+        var wrapper = new Panel
+        {
+            Width = 800,
+            Height = 580,
+            BackColor = Color.White,
+            Anchor = AnchorStyles.None
+        };
+
         Controls.Add(wrapper);
+
         Resize += (_, _) => CenterCard(wrapper);
         Load += (_, _) => CenterCard(wrapper);
+        Shown += (_, _) => CenterCard(wrapper);
 
-        var title = Ui.Label("Medical Appointment", 24, true); title.Location = new Point(45, 45); wrapper.Controls.Add(title);
-        var sub = Ui.Label("Sign in to continue", 11); sub.ForeColor = Ui.Muted; sub.Location = new Point(48, 88); wrapper.Controls.Add(sub);
+        // TITLE
+        var title = new Label
+        {
+            Text = "Medical Appointment System",
+            Font = new Font("Segoe UI", 24, FontStyle.Bold),
+            ForeColor = Ui.Dark,
+            AutoSize = false,
+            Width = 720,
+            Height = 78,
+            Location = new Point(40, 45),
+            TextAlign = ContentAlignment.MiddleLeft
+        };
 
-        txtApi.Text = Session.ApiBaseUrl; txtApi.SetBounds(45, 135, 430, 40); wrapper.Controls.Add(txtApi);
-        txtUsername.SetBounds(45, 195, 430, 40); wrapper.Controls.Add(txtUsername);
-        txtPassword.SetBounds(45, 255, 430, 40); txtPassword.UseSystemPasswordChar = true; wrapper.Controls.Add(txtPassword);
-        chkShow.Location = new Point(45, 310); chkShow.CheckedChanged += (_, _) => txtPassword.UseSystemPasswordChar = !chkShow.Checked; wrapper.Controls.Add(chkShow);
+        wrapper.Controls.Add(title);
 
-        var btnLogin = Ui.PrimaryButton("Login"); btnLogin.SetBounds(45, 360, 430, 44); btnLogin.Click += async (_, _) => await DoLogin(); wrapper.Controls.Add(btnLogin);
-        var btnRegister = Ui.LightButton("Create Account"); btnRegister.SetBounds(45, 418, 430, 44); btnRegister.Click += (_, _) => { new RegisterForm().Show(); Hide(); }; wrapper.Controls.Add(btnRegister);
+        // SUBTITLE
+        var sub = new Label
+        {
+            Text = "Sign in to continue",
+            Font = new Font("Segoe UI", 12),
+            ForeColor = Ui.Muted,
+            AutoSize = false,
+            Width = 720,
+            Height = 32,
+            Location = new Point(42, 120),
+            TextAlign = ContentAlignment.MiddleLeft
+        };
+
+        wrapper.Controls.Add(sub);
+
+        // USERNAME
+        txtUsername.Font = new Font("Segoe UI", 11);
+        txtUsername.SetBounds(40, 190, 720, 42);
+
+        wrapper.Controls.Add(txtUsername);
+
+        // PASSWORD
+        txtPassword.Font = new Font("Segoe UI", 11);
+        txtPassword.SetBounds(40, 255, 720, 42);
+        txtPassword.UseSystemPasswordChar = true;
+
+        wrapper.Controls.Add(txtPassword);
+
+        // SHOW PASSWORD
+        chkShow.Location = new Point(40, 315);
+
+        chkShow.CheckedChanged += (_, _) =>
+        {
+            txtPassword.UseSystemPasswordChar = !chkShow.Checked;
+        };
+
+        wrapper.Controls.Add(chkShow);
+
+        // LOGIN BUTTON
+        var btnLogin = Ui.PrimaryButton("Login");
+
+        btnLogin.SetBounds(40, 375, 720, 50);
+
+        btnLogin.Click += async (_, _) => await DoLogin();
+
+        wrapper.Controls.Add(btnLogin);
+
+        // REGISTER BUTTON
+        var btnRegister = Ui.LightButton("Create Account");
+
+        btnRegister.SetBounds(40, 445, 720, 50);
+
+        btnRegister.Click += (_, _) =>
+        {
+            new RegisterForm().Show();
+            Hide();
+        };
+
+        wrapper.Controls.Add(btnRegister);
     }
 
     private void CenterCard(Control card)
@@ -46,14 +126,51 @@ public class LoginForm : Form
     {
         try
         {
-            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text)) { MessageBox.Show("Enter username and password."); return; }
-            Session.ApiBaseUrl = txtApi.Text.Trim();
-            var login = await Api.Login(txtUsername.Text.Trim(), txtPassword.Text);
-            if (login == null) return;
-            Session.AccessToken = login.access_token; Session.UserId = login.id; Session.FullName = login.fullName; Session.Username = login.username; Session.Role = login.role;
-            if (Session.Role == "Admin") new AdminDashboardForm().Show(); else new UserDashboardForm().Show();
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) ||
+                string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show(
+                    "Enter username and password.",
+                    "Validation",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return;
+            }
+
+            // FIXED API URL
+            Session.ApiBaseUrl = "http://127.0.0.1:8001";
+
+            var login = await Api.Login(
+                txtUsername.Text.Trim(),
+                txtPassword.Text
+            );
+
+            if (login == null)
+                return;
+
+            Session.AccessToken = login.access_token;
+            Session.UserId = login.id;
+            Session.FullName = login.fullName;
+            Session.Username = login.username;
+            Session.Role = login.role;
+
+            if (Session.Role == "Admin")
+                new AdminDashboardForm().Show();
+            else
+                new UserDashboardForm().Show();
+
             Hide();
         }
-        catch (Exception ex) { MessageBox.Show(ex.Message, "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                ex.Message,
+                "Login Failed",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+            );
+        }
     }
 }
