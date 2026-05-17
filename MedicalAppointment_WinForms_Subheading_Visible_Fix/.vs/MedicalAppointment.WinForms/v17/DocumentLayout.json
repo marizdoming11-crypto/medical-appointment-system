@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B8D83B64-76E8-4A56-A049-1E50F67B6001}|MedicalAppointment.WinForms\\MedicalAppointment.WinForms.csproj|c:\\projects\\medicalappointmentsystem_original_admin_status\\medicalappointment_winforms_subheading_visible_fix\\medicalappointment.winforms\\createappointmentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8D83B64-76E8-4A56-A049-1E50F67B6001}|MedicalAppointment.WinForms\\MedicalAppointment.WinForms.csproj|solutionrelative:medicalappointment.winforms\\createappointmentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8D83B64-76E8-4A56-A049-1E50F67B6001}|MedicalAppointment.WinForms\\MedicalAppointment.WinForms.csproj|c:\\projects\\medicalappointmentsystem_original_admin_status\\medicalappointment_winforms_subheading_visible_fix\\medicalappointment.winforms\\createappointmentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B8D83B64-76E8-4A56-A049-1E50F67B6001}|MedicalAppointment.WinForms\\MedicalAppointment.WinForms.csproj|solutionrelative:medicalappointment.winforms\\createappointmentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8D83B64-76E8-4A56-A049-1E50F67B6001}|MedicalAppointment.WinForms\\MedicalAppointment.WinForms.csproj|c:\\projects\\medicalappointmentsystem_original_admin_status\\medicalappointment_winforms_subheading_visible_fix\\medicalappointment.winforms\\myappointmentsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B8D83B64-76E8-4A56-A049-1E50F67B6001}|MedicalAppointment.WinForms\\MedicalAppointment.WinForms.csproj|solutionrelative:medicalappointment.winforms\\myappointmentsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B8D83B64-76E8-4A56-A049-1E50F67B6001}|MedicalAppointment.WinForms\\MedicalAppointment.WinForms.csproj|c:\\projects\\medicalappointmentsystem_original_admin_status\\medicalappointment_winforms_subheading_visible_fix\\medicalappointment.winforms\\reportsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B8D83B64-76E8-4A56-A049-1E50F67B6001}|MedicalAppointment.WinForms\\MedicalAppointment.WinForms.csproj|solutionrelative:medicalappointment.winforms\\reportsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,19 +51,56 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "CreateAppointmentForm.cs",
+              "DocumentMoniker": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\CreateAppointmentForm.cs",
+              "RelativeDocumentMoniker": "MedicalAppointment.WinForms\\CreateAppointmentForm.cs",
+              "ToolTip": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\CreateAppointmentForm.cs",
+              "RelativeToolTip": "MedicalAppointment.WinForms\\CreateAppointmentForm.cs",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAAAJsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T00:27:09.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateAppointmentForm.cs [Design]",
+              "DocumentMoniker": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\CreateAppointmentForm.cs",
+              "RelativeDocumentMoniker": "MedicalAppointment.WinForms\\CreateAppointmentForm.cs",
+              "ToolTip": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\CreateAppointmentForm.cs [Design]",
+              "RelativeToolTip": "MedicalAppointment.WinForms\\CreateAppointmentForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T00:27:03.782Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MyAppointmentsForm.cs [Design]",
+              "DocumentMoniker": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\MyAppointmentsForm.cs",
+              "RelativeDocumentMoniker": "MedicalAppointment.WinForms\\MyAppointmentsForm.cs",
+              "ToolTip": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\MyAppointmentsForm.cs [Design]",
+              "RelativeToolTip": "MedicalAppointment.WinForms\\MyAppointmentsForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T00:26:52.723Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ReportsForm.cs",
               "DocumentMoniker": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\ReportsForm.cs",
               "RelativeDocumentMoniker": "MedicalAppointment.WinForms\\ReportsForm.cs",
               "ToolTip": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\ReportsForm.cs",
               "RelativeToolTip": "MedicalAppointment.WinForms\\ReportsForm.cs",
-              "ViewState": "AgIAAOkAAAAAAAAAAAAAAAUBAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAEwBAAAAAAAAAAAAAG0BAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-16T23:56:57.081Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Ui.cs",
               "DocumentMoniker": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\Ui.cs",
               "RelativeDocumentMoniker": "MedicalAppointment.WinForms\\Ui.cs",
@@ -59,12 +108,11 @@
               "RelativeToolTip": "MedicalAppointment.WinForms\\Ui.cs",
               "ViewState": "AgIAABUBAAAAAAAAAAAmwDQBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T23:46:54.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-16T23:46:54.298Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "LoginForm.cs",
               "DocumentMoniker": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\LoginForm.cs",
               "RelativeDocumentMoniker": "MedicalAppointment.WinForms\\LoginForm.cs",
@@ -72,24 +120,22 @@
               "RelativeToolTip": "MedicalAppointment.WinForms\\LoginForm.cs",
               "ViewState": "AgIAAI4AAAAAAAAAAAAAAJwAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T15:22:02.48Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-16T15:22:02.48Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "LoginForm.resx",
               "DocumentMoniker": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\LoginForm.resx",
               "RelativeDocumentMoniker": "MedicalAppointment.WinForms\\LoginForm.resx",
               "ToolTip": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\LoginForm.resx",
               "RelativeToolTip": "MedicalAppointment.WinForms\\LoginForm.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2026-05-16T15:22:00.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-16T15:22:00.525Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "AdminDashboardForm.cs",
               "DocumentMoniker": "C:\\projects\\MedicalAppointmentSystem_ORIGINAL_ADMIN_STATUS\\MedicalAppointment_WinForms_Subheading_Visible_Fix\\MedicalAppointment.WinForms\\AdminDashboardForm.cs",
               "RelativeDocumentMoniker": "MedicalAppointment.WinForms\\AdminDashboardForm.cs",
@@ -97,8 +143,7 @@
               "RelativeToolTip": "MedicalAppointment.WinForms\\AdminDashboardForm.cs",
               "ViewState": "AgIAAGAAAAAAAAAAAAAAAG4AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T14:53:39.908Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-16T14:53:39.908Z"
             }
           ]
         }
