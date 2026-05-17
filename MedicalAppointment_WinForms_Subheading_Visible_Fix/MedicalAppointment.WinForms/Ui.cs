@@ -284,8 +284,20 @@ public class AppForm : Form
 
     protected void Logout()
     {
+        var result = MessageBox.Show(
+            "Are you sure you want to logout?",
+            "Confirm Logout",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+        );
+
+        if (result != DialogResult.Yes)
+            return;
+
         Session.Clear();
+
         new LoginForm().Show();
+
         Hide();
     }
 
